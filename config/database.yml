@@ -78,8 +78,13 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+# ------- modifs perso pour heroku
+#production:
+#  <<: *default
+#  database: twapp_production
+#  username: twapp
+#  password: <%= ENV['TWAPP_DATABASE_PASSWORD'] %>
+
 production:
-  <<: *default
-  database: twapp_production
-  username: twapp
-  password: <%= ENV['TWAPP_DATABASE_PASSWORD'] %>
+     url: <%= ENV['DATABASE_URL'] %>
+# ----- fin des modifs perso
