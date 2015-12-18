@@ -32,6 +32,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Pour l'application exemple
+
 # pour Heroku
 gem 'rails_12factor', group: :production
 
@@ -46,4 +48,13 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  # Ajouts pour cet exemple
+  gem 'rspec-rails'
+end
+
+group :test do
+  # ajouts pour cet appli exemple
+  gem 'rspec'
+  gem 'webrat', '0.7.1'
 end
