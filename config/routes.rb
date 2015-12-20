@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
+  #get 'pages/about'
   #get 'pages/home'
   #get 'pages/contact'
 
   get 'home' => 'pages#home'
   get 'contact' => 'pages#contact'
+  get 'about' => 'pages#about'
 
   resources :microposts
   resources :users

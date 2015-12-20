@@ -89,5 +89,6 @@ test:
 #  password: <%= ENV['TWAPP_DATABASE_PASSWORD'] %>
 
 production:
-     url: <%= ENV['DATABASE_URL'] %>
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
 # ----- fin des modifs perso
