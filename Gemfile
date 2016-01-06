@@ -51,7 +51,8 @@ group :development do
   gem 'spring'
 
   # Ajouts pour cet exemple
-  gem 'rspec-rails'
+  gem 'rspec-rails' # gem pour les tests
+  gem 'annotate' #gem pour annoter les model
 end
 
 group :test do
