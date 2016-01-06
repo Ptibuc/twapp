@@ -1,11 +1,10 @@
 <header>
-  <% logo = image_tag("google-logo.jpg", :alt => titre, :title => titre, :class => "round") %>
   <%= link_to logo, root_path %>
   <nav class="round">
     <ul>
       <li><%= link_to "Accueil", root_path %></li>
       <li><%= link_to "Aide", '#' %></li>
-      <li><%= link_to "Inscription", '#' %></li>
+      <li><%= link_to "Inscription", signin_path %></li>
     </ul>
   </nav>
 </header>

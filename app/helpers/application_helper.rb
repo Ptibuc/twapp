@@ -9,4 +9,8 @@ module ApplicationHelper
     end
   end
 
+  def logo
+    image_tag("google-logo.jpg", :alt => titre, :title => titre, :class => "round")
+  end
+
 end
