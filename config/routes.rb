@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'home' => 'pages#home'
   get 'contact' => 'pages#contact'
   get 'about' => 'pages#about'
+  get 'help' => 'pages#help'
 
   resources :microposts
   resources :users

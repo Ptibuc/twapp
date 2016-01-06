@@ -42,6 +42,12 @@
    font-size: 200%;
  }
 
+ /* Liens */
+
+ a {
+   background: none;
+ }
+
  /* Navigation */
 
  nav {
@@ -76,6 +82,14 @@
 
  nav ul li a:hover {
    text-decoration: underline;
+ }
+
+/* Footer */
+
+footer nav {
+   width: 100%;
+   text-align: center;
+   margin-top: 10px;
  }
 
  /* Bouton inscription */
