@@ -38,6 +38,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # pour Heroku
 gem 'rails_12factor', group: :production
 
+# pour l'identification
+gem 'bcrypt', require: "bcrypt"
+
+# pour le gravatar
+gem 'gravatar_image_tag'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

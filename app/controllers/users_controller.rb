@@ -2,11 +2,13 @@
 #
 # Table name: users
 #
-#  id         :integer          not null, primary key
-#  nom        :string
-#  email      :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id                 :integer          not null, primary key
+#  nom                :string
+#  email              :string
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  encrypted_password :string
+#  salt               :string
 #
 
 class UsersController < ApplicationController
@@ -83,6 +85,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:nom, :email, :password, :password_confirmation)
+      params.require(:user).permit(:nom, :email, :password, :password_confirmation, :salt)
     end
 end
