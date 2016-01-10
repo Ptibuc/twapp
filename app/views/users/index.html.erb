@@ -14,7 +14,9 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.nom %></td>
+        <td>
+          <%= gravatar_for user, :size => 20 %>
+          <%= user.nom %></td>
         <td><%= user.email %></td>
         <td><%= link_to 'Afficher', user, class: "btn btn-xs" %></td>
         <td><%= link_to 'Editer', edit_user_path(user), class: "btn btn-xs" %></td>

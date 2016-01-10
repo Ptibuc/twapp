@@ -1,34 +1,14 @@
-<h1>
-  <%= gravatar_image_tag @user.email %>
-  <%= @user.nom %>
-</h1>
-
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Email : </strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>Clé :</strong>
-  <%= @user.salt %>
-</p>
-
-<p>
-  <strong>Mot de passe crypté :</strong>
-  <%= @user.encrypted_password %>
-</p>
-
-<p>
-  <strong>Créé le :</strong>
-  <%= @user.created_at %>
-</p>
-
-<p>
-  <strong>Dernière modif :</strong>
-  <%= @user.updated_at %>
-</p>
-
-<%= link_to 'Editer', edit_user_path(@user) %> |
-<%= link_to 'Retour', users_path %>
+<table class="profile" summary="Information profil">
+  <tr>
+    <td class="main">
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.nom %>
+      </h1>
+    </td>
+    <td class="sidebar round">
+      <strong>Nom</strong> <%= @user.nom %><br />
+      <strong>URL</strong>  <%= link_to user_path(@user), @user %>
+    </td>
+  </tr>
+</table>
