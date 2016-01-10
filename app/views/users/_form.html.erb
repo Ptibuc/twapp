@@ -1,33 +1,24 @@
 <%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> empêche la création du compte :</h2>
 
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'error_messages' %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :nom, "Votre nom" %><br>
-    <%= f.text_field :nom %>
+    <%= f.text_field :nom, class: "form-control", placeholder: "Nom" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :email, "Votre adresse email" %><br>
-    <%= f.text_field :email %>
+    <%= f.email_field :email, class: "form-control", placeholder: "Email" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :password, "Mot de passe" %><br>
-    <%= f.text_field :password %>
+    <%= f.password_field :password, class: "form-control", placeholder: "Mot de passe" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :password_confirmation, "Répétez votre mot de passe" %><br>
-    <%= f.text_field :password_confirmation %>
+    <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Répétez votre mot de passe" %>
   </div>
-  <div class="actions">
+  <div class="form-group">
     <%= f.submit "Enregistrer", class: "btn btn-success" %>
   </div>
 <% end %>

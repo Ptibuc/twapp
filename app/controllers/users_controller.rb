@@ -29,12 +29,13 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    @titre = "Nouvel utilisateur"
+    @title = "Inscription"
     @user = User.new
   end
 
   # GET /users/1/edit
   def edit
+    @title = "Modifier #{@user.nom}"
   end
 
   # POST /users
@@ -42,14 +43,22 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    #respond_to do |format|
+    #  if @user.save
+    #    format.html { redirect_to @user, notice: 'Votre compte a bien été créé' }
+    #    format.json { render :show, status: :created, location: @user }
+    #  else
+    #    format.html { render :new }
+    #    format.json { render json: @user.errors, status: :unprocessable_entity }
+    #  end
+    #end
+    if @user.save
+      # Traite un succès d'enregistrement.
+      flash[:success] = "Votre compte a bien été créé"
+      redirect_to @user
+    else
+      @titre = "Inscription"
+      render 'new'
     end
   end
 

@@ -1,0 +1,12 @@
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <%  # pluralize met au pluriel si il y a plusieurs éléments %>
+    <h2><%= pluralize(@user.errors.count, "erreur") %> empêche la création du compte :</h2>
+    <p>Merci de corriger ces champs :</p>
+    <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
