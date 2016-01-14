@@ -55,6 +55,7 @@ class UsersController < ApplicationController
     if @user.save
       # Traite un succès d'enregistrement.
       flash[:success] = "Votre compte a bien été créé"
+      sign_in @user
       redirect_to @user
     else
       @titre = "Inscription"

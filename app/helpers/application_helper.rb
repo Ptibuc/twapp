@@ -19,4 +19,10 @@ module ApplicationHelper
                                               :gravatar => options)
   end
 
+  def glyphicon(icon, text)
+
+    # html_safe
+    
+  end
+
 end

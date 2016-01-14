@@ -52,6 +52,16 @@ class User < ActiveRecord::Base
     return user if user.has_password?(submitted_password)
   end
 
+  # fonction pour authentification persistante
+  #  on va s'identifier avec le salt
+  def self.authenticate_with_salt(id, cookie_salt)
+    user = find_by(:id => id)
+    # on récupère l'utilisateur via son id
+    (user && user.salt == cookie_salt) ? user : nil
+    # on vérifie que la clé ID + SALT = cookie_salt
+    # si oui on retourne le user, sinon une valeur nulle
+  end
+
   private
 
     def encrypt_password
