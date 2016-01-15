@@ -29,6 +29,14 @@ module SessionsHelper
     # ou va le chercher dans le cas contraire grâce au ||= (ou égal)
   end
 
+  def deny_acccess
+    redirect_to signin_path, :notice => "Vous devez être authentifié pour avoir accès à cette page"
+  end
+
+  def current_user?(user)
+    user == current_user
+  end
+
 private
 
   def user_from_remeber_token

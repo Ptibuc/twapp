@@ -1,6 +1,9 @@
 <%= form_for(@user) do |f| %>
 
-  <%= render 'error_messages' %>
+  <%= render 'error_messages', :object => f.object %>
+  <%  # mettre le :object permet de dire que
+      # les messages dépendent du formulaire et non de @user
+  %>
 
   <div class="form-group">
     <%= f.label :nom, "Votre nom" %><br>

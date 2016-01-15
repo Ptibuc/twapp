@@ -13,6 +13,8 @@
 
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate, only: [:edit, :update]
+  before_filter :correct_user, only: [:edit, :update]
 
   # GET /users
   # GET /users.json
@@ -35,7 +37,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @title = "Modifier #{@user.nom}"
+    @title = "Modifier mon profil"
   end
 
   # POST /users
@@ -66,14 +68,21 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    #respond_to do |format|
+    #  if @user.update(user_params)
+    #    format.html { redirect_to @user, notice: 'User was successfully updated.' }
+    #    format.json { render :show, status: :ok, location: @user }
+    #  else
+    #    format.html { render :edit }
+    #    format.json { render json: @user.errors, status: :unprocessable_entity }
+    #  end
+    #end
+    if @user.update_attributes(user_params)
+      flash[:success] = "Votre profil a été mis à jour."
+      redirect_to @user
+    else
+      #@title = ""
+      render 'edit'
     end
   end
 
@@ -96,5 +105,19 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:nom, :email, :password, :password_confirmation, :salt)
+      #params.require(:user).permit(:nom, :email, :password, :password_confirmation)
     end
+
+    # procédure pour bloquer l'accès si non authentifié
+    def authenticate
+      deny_access unless signed_in?
+    end
+
+    # procédure pour vérifier que l'utilisateur actuel
+    # est le même que celui loggé
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to root_path unless current_user?(@user)
+    end
+
 end
